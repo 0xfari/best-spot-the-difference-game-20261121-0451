@@ -3,54 +3,45 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Midnight Aquarium — Spot the Difference</title>
+<title>The Midnight Bakery — Spot the Difference</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="app">
-    <header>
-      <div class="title-block">
-        <h1>THE MIDNIGHT AQUARIUM</h1>
-        <p class="subtitle">Spot the difference &middot; five glowing reefs &middot; fifty hidden changes</p>
-      </div>
-      <div class="hud">
-        <div class="hud-item"><span class="hud-label">LEVEL</span><span id="level-name">Coral Reef</span></div>
-        <div class="hud-item"><span class="hud-label">REMAINING</span><span id="counter">10 / 10</span></div>
-        <div class="hud-item"><span class="hud-label">TIME</span><span id="timer">3:00</span></div>
-        <div class="hud-item"><span class="hud-label">SCORE</span><span id="score">0</span></div>
-        <div class="hud-item"><span class="hud-label">COMBO</span><span id="combo">&times;1</span></div>
-        <button id="hint-btn" class="hud-btn" title="Hint (H)">HINT <span id="hints-left">3</span></button>
-        <button id="mute-btn" class="hud-btn" title="Mute (M)">SOUND ON</button>
-      </div>
-      <div id="timer-bar"><div id="timer-fill"></div></div>
-    </header>
-
-    <main>
-      <section class="panel" id="panel-left">
-        <div class="panel-tag">LEFT &middot; THE ORIGINAL</div>
-        <canvas id="canvas-left" width="640" height="560"></canvas>
-      </section>
-      <section class="panel" id="panel-right">
-        <div class="panel-tag">RIGHT &middot; TEN THINGS CHANGED</div>
-        <canvas id="canvas-right" width="640" height="560"></canvas>
-      </section>
-    </main>
-
-    <footer>
-      <div id="level-dots" aria-label="levels"></div>
-      <p class="help">Click a difference on either picture &middot; H for a hint &middot; M to mute &middot; find all ten before the light runs out</p>
-    </footer>
-  </div>
-
-  <div id="overlay" class="overlay hidden">
-    <div class="overlay-card">
+<div id="stage">
+  <header id="hud">
+    <div class="title-block">
+      <h1>THE MIDNIGHT BAKERY</h1>
+      <p id="scene-name">Scene 1 · The Bakery Counter</p>
+    </div>
+    <div class="stat"><span class="label">FOUND</span><span id="found-count">0 / 6</span></div>
+    <div class="stat"><span class="label">TIME</span><span id="timer">90</span></div>
+    <div class="stat"><span class="label">SCORE</span><span id="score">0</span></div>
+    <div class="stat"><span class="label">STREAK</span><span id="streak">×1</span></div>
+    <button id="hint-btn" type="button">HINT (H) · 3</button>
+    <button id="mute-btn" type="button" aria-label="Mute">SOUND ON</button>
+  </header>
+  <main id="boards">
+    <section class="panel">
+      <h2>LEFT — the original</h2>
+      <canvas id="left-canvas" width="600" height="580"></canvas>
+    </section>
+    <section class="panel">
+      <h2>RIGHT — spot what's different</h2>
+      <canvas id="right-canvas" width="600" height="580"></canvas>
+    </section>
+  </main>
+  <footer id="bar">
+    <div id="dots" aria-label="Scene progress"></div>
+    <p id="message">Click a difference on either picture. Find all 6 before the clock runs out.</p>
+  </footer>
+  <div id="overlay" class="hidden">
+    <div id="overlay-card">
       <h2 id="overlay-title"></h2>
       <p id="overlay-text"></p>
-      <div id="overlay-stats"></div>
-      <button id="overlay-btn" class="big-btn"></button>
+      <button id="overlay-btn" type="button"></button>
     </div>
   </div>
-
-  <script type="module" src="game.js"></script>
+</div>
+<script type="module" src="boot.js"></script>
 </body>
 </html>

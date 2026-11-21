@@ -34,12 +34,12 @@ const server = createServer(async (req, res) => {
     const body = await readFile(file);
     res.writeHead(200, { 'content-type': mime[extname(file)] ?? 'application/octet-stream' });
     res.end(body);
-  } catch {
+  } catch (err) {
     res.writeHead(500, { 'content-type': 'text/plain' });
-    res.end('read error');
+    res.end(String(err));
   }
 });
 
 server.listen(port, () => {
-  console.log(`serving http://localhost:${port}/game/index.html`);
+  console.log(`midnight bakery serving at http://localhost:${port}/game/index.html`);
 });
