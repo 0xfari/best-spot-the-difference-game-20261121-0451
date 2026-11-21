@@ -1,0 +1,159 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #030d1a;
+  color: #dff3ff;
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#app { max-width: 1280px; margin: 0 auto; padding: 10px 16px 12px; }
+
+header { margin-bottom: 8px; }
+.title-block { text-align: center; margin-bottom: 8px; }
+h1 {
+  font-size: 30px;
+  letter-spacing: 6px;
+  color: #7fe7ff;
+  text-shadow: 0 0 18px rgba(80, 200, 255, 0.65), 0 2px 0 #062a44;
+}
+.subtitle {
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #8fb8d8;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.hud {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  background: #062033;
+  border: 1px solid #155a7d;
+  border-radius: 10px;
+  padding: 7px 10px;
+}
+.hud-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 74px;
+  padding: 2px 8px;
+  background: #041525;
+  border-radius: 8px;
+}
+.hud-label { font-size: 10px; letter-spacing: 2px; color: #6fa8c9; }
+.hud-item span:last-child { font-size: 17px; font-weight: bold; color: #eaf9ff; }
+#counter { color: #ffd166; }
+#timer { color: #7dffb0; }
+#timer.low { color: #ff6b6b; animation: blink 1s steps(2) infinite; }
+@keyframes blink { 50% { opacity: 0.45; } }
+
+.hud-btn {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #062033;
+  background: #ffd166;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 12px;
+  cursor: pointer;
+}
+.hud-btn:hover { background: #ffdd8a; }
+.hud-btn:disabled { background: #33506a; color: #9db8cc; cursor: default; }
+#mute-btn { background: #7fe7ff; }
+#mute-btn:hover { background: #a5efff; }
+
+#timer-bar {
+  height: 6px;
+  background: #0a2c44;
+  border-radius: 3px;
+  margin-top: 6px;
+  overflow: hidden;
+}
+#timer-fill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #2ee6a8, #7fe7ff);
+  border-radius: 3px;
+  transition: width 0.5s linear;
+}
+#timer-fill.low { background: linear-gradient(90deg, #ff6b6b, #ff9f43); }
+
+main {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+.panel {
+  background: #041525;
+  border: 1px solid #155a7d;
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 0 24px rgba(20, 140, 200, 0.18);
+}
+.panel-tag {
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #8fd8ff;
+  margin-bottom: 6px;
+}
+canvas {
+  display: block;
+  width: 600px;
+  height: 525px;
+  border-radius: 8px;
+  cursor: crosshair;
+}
+canvas.shake { animation: shake 0.25s; }
+@keyframes shake {
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+footer { margin-top: 10px; text-align: center; }
+#level-dots { display: flex; justify-content: center; gap: 8px; margin-bottom: 6px; }
+.dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: #12395a; border: 2px solid #2a6ea0;
+}
+.dot.done { background: #2ee6a8; border-color: #2ee6a8; }
+.dot.now { background: #ffd166; border-color: #ffd166; box-shadow: 0 0 10px rgba(255, 209, 102, 0.8); }
+.help { font-size: 12px; color: #7ea8c4; letter-spacing: 0.5px; }
+
+.overlay {
+  position: fixed; inset: 0;
+  background: rgba(2, 10, 22, 0.82);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 10;
+}
+.overlay.hidden { display: none; }
+.overlay-card {
+  background: linear-gradient(160deg, #072a44, #041525);
+  border: 1px solid #2a8fc4;
+  border-radius: 16px;
+  padding: 28px 34px;
+  max-width: 520px;
+  text-align: center;
+  box-shadow: 0 0 60px rgba(40, 180, 255, 0.35);
+}
+.overlay-card h2 {
+  font-size: 26px; letter-spacing: 3px; color: #7fe7ff; margin-bottom: 10px;
+}
+.overlay-card p { font-size: 15px; line-height: 1.55; color: #cfeaff; margin-bottom: 12px; }
+#overlay-stats { font-size: 14px; color: #ffd166; margin-bottom: 16px; line-height: 1.7; }
+.big-btn {
+  font-family: inherit;
+  font-size: 17px; font-weight: bold; letter-spacing: 2px;
+  color: #062033; background: #ffd166;
+  border: none; border-radius: 10px;
+  padding: 12px 28px; cursor: pointer;
+}
+.big-btn:hover { background: #ffdd8a; }
